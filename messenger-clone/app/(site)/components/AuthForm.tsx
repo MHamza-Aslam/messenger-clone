@@ -50,20 +50,15 @@ const onSubmit : SubmitHandler<FieldValues> = (data) => {
     if(variant === "LOGIN"){
         // nextAuth SignIn
     }
+}
+const socialAction = (action:String) => {
+    setIsLoading(true);
 
-    const socialAction = (action:String) => {
-        setIsLoading(true);
-
-        //NextAuth Social SignIn
-
-    }
+    //NextAuth Social SignIn
 
 }
 
-
-    function socialAction(arg0: string): void {
-        throw new Error("Function not implemented.");
-    }
+   
 
     return (
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md"> 
@@ -74,7 +69,8 @@ const onSubmit : SubmitHandler<FieldValues> = (data) => {
                 label="Name"
                 id="name"
                 register={register}
-                errors={errors} disabled={false}                
+                errors={errors}
+                disabled={isLoading}                
                  />
                 )}
                 <Input
@@ -82,14 +78,16 @@ const onSubmit : SubmitHandler<FieldValues> = (data) => {
                 id="email"
                 type="email"
                 register={register}
-                errors={errors} disabled={false}                
+                errors={errors} 
+                disabled={isLoading}                   
                  />
                  <Input
                 label="Password"
                 id="password"
                 type="password"
                 register={register}
-                errors={errors} disabled={false}                
+                errors={errors} 
+                disabled={isLoading}                   
                  />
                  <div>
                     <Button
@@ -130,14 +128,14 @@ const onSubmit : SubmitHandler<FieldValues> = (data) => {
                 </div>
             </div>
             <div className="
-            flex
-            gap-2
-            justify-center
-            text-sm
-            mt-6
-            px-2
-            text-gray-500
-            ">
+                    flex
+                    gap-2
+                    justify-center
+                    text-sm
+                    mt-6
+                    px-2
+                  text-gray-500
+                 ">
                 <div>
                     {variant === 'LOGIN' ? 'New to Messenger?' : 'Already have an account'}
                 </div>
