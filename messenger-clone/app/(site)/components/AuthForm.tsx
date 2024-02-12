@@ -70,10 +70,19 @@ const onSubmit : SubmitHandler<FieldValues> = (data) => {
          .finally(()=> setIsLoading(false));
     }
 }
-const socialAction = (action:String) => {
+const socialAction = (action:string) => {
     setIsLoading(true);
 
-    //NextAuth Social SignIn
+    signIn( action ,{ redirect: false})
+    .then((callback) => {
+        if(callback?.error) {
+            toast.error('Invalid credentials');
+        }
+        if(callback?.ok && !callback?.error){
+            toast.success('Logged in')
+        }
+    })
+    .finally(() => setIsLoading(false))
 
 }
 
