@@ -4,4 +4,6 @@
       
         "strings": true
     },
+    "powermode.presets": "magic",
+    "powermode.enabled": false,
 }
