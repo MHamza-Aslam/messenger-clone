@@ -10,12 +10,12 @@ import { FullConversationType } from "@/app/types";
 import useOtherUser from "@/app/hooks/useOtherUser";
 import Avatar from "@/app/components/Avatar";
 
-interface conversationBoxProps {
+interface  ConversationBoxProps {
     data:FullConversationType,
     selected?:boolean
 }
 
-const ConversationBox:React.FC<conversationBoxProps>=({
+const ConversationBox:React.FC<ConversationBoxProps>=({
     data,
     selected
 })=> {
@@ -26,7 +26,7 @@ const ConversationBox:React.FC<conversationBoxProps>=({
 
 
     const handleClick=useCallback(()=>{
-        router.push(`/Conversations/${data.id}`)
+        router.push(`/conversations/${data.id}`)
 
     },[data.id,router]);
     
