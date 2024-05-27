@@ -57,10 +57,12 @@ const Modal:React.FC<ModalProps>= ({
                  bg-white px-4 pb-4 text-left shadow-xl transition-all w-full
                  sm:my-8 sm:w-full sm:max-w-lg sm:p-6
                  "
-                 onClick={onClose}
+                 
                  >
                     <span className="sr-only">Close</span>
-                    <IoClose className="h-6 w-6"/>
+                    <IoClose className="h-6 w-6"
+                    onClick={onClose}
+                    />
                     <div
                     className="absolute top-0 right-0 hidden pr-4 pt-4 sm:block z-10"
                     >
