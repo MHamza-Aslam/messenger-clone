@@ -7,7 +7,7 @@ import { Fragment, useMemo, useState } from "react";
 import {Dialog, Transition} from "@headlessui/react";
 import {IoClose, IoTrash} from "react-icons/io5"
 import Avatar from "@/app/components/Avatar";
-import Modal from "@/app/components/Modal";
+import ConfirmModal from "./ConfirmModal";
 
 
 interface ProfileDrawerProps {
@@ -45,15 +45,11 @@ const ProfileDrawer:React.FC<ProfileDrawerProps>=({
 
     return(
         <>
-        <Modal
+        <ConfirmModal
         isOpen={confirmOpen}
         onClose={()=>setConfirmOpen(false)}
-        >
-            <div className="bg-white p-5">
-                <p>Hello Modal!</p>
-
-            </div>
-            </Modal>
+        />
+            
         <Transition.Root show={isOpen} as={Fragment}>
             <Dialog as="div" className="relative z-50" onClose={onClose}>
                 <Transition.Child
@@ -87,55 +83,54 @@ const ProfileDrawer:React.FC<ProfileDrawerProps>=({
                                     <div className="flex h-full flex-col overflow-scroll bg-white py-6 shadow-xl">
             <div className="px-4 sm:px-6">
                                             <div className="flex items-start justify-end">
-                                                <div className="ml-3 flex h-7 items-center">
-                                                    <button 
-                                                    onClick={onClose}
-                                                    className="
-                                                    rounded-md bg-white text-gray-400 hover:text-gray-500
-                                                    focus:outline-none
+                                            <div className="ml-3 flex h-7 items-center">
+                               <button 
+                               onClick={onClose}
+                               className="
+                               rounded-md bg-white text-gray-400 hover:text-gray-500
+                                  focus:outline-none
                                                     focus:ring-2
-                                                    focus:ring-sky-500
-                                                    focus:ring-offset-2
-                                                    ">
-                                                        <span className="sr-only">
-                                                            Close Panel
-                                                        </span>
-                                                        <IoClose size={24}/>
-                                                    </button>
+                               focus:ring-sky-500
+                                         focus:ring-offset-2
+                                         ">
+                                             <span className="sr-only">
+                                                 Close Panel
+                                             </span>
+                                             <IoClose size={24}/>
+                                         </button>
 
-                                                </div>
+                                     </div>
 
-                                            </div>
+                                 </div>
 
-                                        </div>
-                                    <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                                        <div className="flex flex-col items-center">
-                                            <div className="mb-2">
-                                                <Avatar user={otherUser}/>
-                                            </div>
-                                            <div>
-                                                {title}
-                                            </div>
-                                            <div className="text-sm text-gray-500">
-                                                {statusText}
-                                            </div>
-                                            <div className="flex gap-10 my-8">
-                                                <div 
-                                                   onClick={()=>setConfirmOpen(true)}
-                                                className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75"
-                                                >
-                                                     <div 
-                                                       className="w-10 h-10 bg-neutral-100 flex items-center justify-center rounded-full">
-                                                        <IoTrash size={20}/>
-
-                                                    </div>
-                                                    <div className="text-sm font-light text-neutral-600">
-                                                        Delete
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="w-full pb-5 pt-5 sm:px-0 sm:pt-0">
-                                                <dl className="space-y-8 px-4 sm:space-y-6 sm:px-6">
+                             </div>
+                         <div className="relative mt-6 flex-1 px-4 sm:px-6">
+                             <div className="flex flex-col items-center">
+                                 <div className="mb-2">
+                                     <Avatar user={otherUser}/>
+                                 </div>
+                                 <div>
+                                     {title}
+                                 </div>
+                                 <div className="text-sm text-gray-500">
+                                     {statusText}
+                                 </div>
+                                 <div className="flex gap-10 my-8">
+                                     <div 
+                                        onClick={()=>setConfirmOpen(true)}
+                                     className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75"
+                                     >
+                                          <div 
+                                            className="w-10 h-10 bg-neutral-100 flex items-center justify-center rounded-full">
+                                             <IoTrash size={20}/>
+                                         </div>
+                                         <div className="text-sm font-light text-neutral-600">
+                                             Delete
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div className="w-full pb-5 pt-5 sm:px-0 sm:pt-0">
+                                     <dl className="space-y-8 px-4 sm:space-y-6 sm:px-6">
                                                     {!data.isGroup && (
                                                         <div>
               <dt className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">
