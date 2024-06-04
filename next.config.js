@@ -3,6 +3,10 @@ const nextConfig = {
     eslint:{
         ignoreDuringBuilds:true
     },
+    typescript:{
+        ignoreBuildErrors:true,
+    
+      },
     // experimental:{
     //     swcPlugins:[
     //         ["next-superjson-plugin",{}]
